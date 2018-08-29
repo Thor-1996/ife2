@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <script>
+        function Go() {
+            console.log("Go");
+        }
+
+        function GoSteps(n) {
+            if (typeof n == 'undefined') {
+                Go();
+                return true;
+            }
+            else if (typeof n == 'boolean') {
+                if (n == true) {
+                    Go();
+                    return true;
+                }
+                else {
+                    console.log('Go 0次');
+                    return true;
+                }
+            }
+            else if (typeof n != 'number') {
+                console.log('Go 0次');
+                return true;
+            }
+            else {
+                if (isNaN(n)) {
+                    console.log('Go 0次')
+                    return true;
+                }
+                else if (n <= 0) {
+                    console.log('Go 0次')
+                    return true;
+                }
+                else {
+                    var a = Math.floor(n);
+                    while (a--) {
+                        Go();
+                    }
+                    return true;
+                }
+            }
+        }
+
+
+
+        GoSteps(10); // Go 10次
+        GoSteps(1); // Go 1次
+        GoSteps(); // Go 1次，认为缺少参数时，默认参数为1
+        GoSteps(0);  // 0次
+        GoSteps(-1);  // 0次
+        GoSteps(1.4);  // Go 1次
+        GoSteps(1.6);  // Go 1次
+        GoSteps(-1);  // 0次
+        GoSteps(true);  // Go 1次
+        GoSteps(false);  // 0次
+        GoSteps("Test");  // 0次
+        GoSteps(NaN);  // 0次
+        GoSteps(null);  // 0次
+    </script>
+</body>
+
+</html>

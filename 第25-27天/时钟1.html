@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <p id='p'></p>
+    <script>
+        function a() {
+            var time = new Date();
+            var h = time.getHours();
+            var m = checkTime(time.getMinutes());
+            var s = checkTime(time.getSeconds());
+            var year = time.getFullYear();
+            var month = checkMonth(time.getMonth());
+            var date = checkTime(time.getDate());
+            var day = checkDay(time.getDay());
+            document.getElementById('p').innerText = year + '年' + month + '月' + date + '日' + '星期' + day + h + ':' + m + ':' + s;
+        }
+        function checkTime(i) {
+            if (i < 10) {
+                i = '0' + i;
+            }
+            return i;
+        }
+        function checkMonth(i) {
+            var n = i + 1;
+            if (n < 10) {
+                n = '0' + n;
+            }
+            return n;
+        }
+        function checkDay(i) {
+            switch (i) {
+                case 0: return '日 '
+                case 1: return '一 '
+                case 2: return '二 '
+                case 3: return '三 '
+                case 4: return '四 '
+                case 5: return '五 '
+                case 6: return '六 '
+            }
+        }
+        setInterval(a, 0);
+    </script>
+</body>
+
+</html>
